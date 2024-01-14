@@ -2,15 +2,13 @@ package basic;
 
 import base.TestBase;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Point;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class AlertsTests extends TestBase {
     @BeforeMethod
-    public void openAlertsPage(){
+    public void openAlertsPage() {
         driver.get("http://seleniumui.moderntester.pl/alerts.php");
     }
 
