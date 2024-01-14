@@ -7,6 +7,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class TestBase {
+    public boolean isHeadless(){
+        return false; // powinno być pobrane z pliku
+    }
     public WebDriver driver;
 
     @BeforeMethod
@@ -16,6 +19,11 @@ public class TestBase {
 
         // to zadziała bo od czerwca 2023, selenium ma wbudowanych
         // webdrivermamanger -> automatycznie pobiera drivery do przegladarek
+
+        if(isHeadless()){
+            options.addArguments("--headless");
+        }
+
         driver = new ChromeDriver(options);
     }
 

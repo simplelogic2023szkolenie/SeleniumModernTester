@@ -7,6 +7,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class AlertsTests extends TestBase {
+
+    @Override
+    public boolean isHeadless(){
+        // uwawaga to ustawienie powoduje ze te testy lecą
+        // w trybie headless
+        return true;
+    }
+
     @BeforeMethod
     public void openAlertsPage() {
         driver.get("http://seleniumui.moderntester.pl/alerts.php");
