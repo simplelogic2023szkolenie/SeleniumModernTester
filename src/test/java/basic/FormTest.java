@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.List;
 import java.util.Random;
 
@@ -40,7 +41,11 @@ public class FormTest extends TestBase {
         Select continentsSelect = new Select(driver.findElement(By.cssSelector("#selectContinents")));
         continentsSelect.selectByValue("europe");
 
+        Select commandsSelect = new Select(driver.findElement(By.cssSelector("#selectSeleniumCommands")));
+        commandsSelect.selectByValue("browser-commands");
 
+        File fileToUpload = new File("src/main/resources/someFile.txt");
+        driver.findElement(By.cssSelector("#chooseFile")).sendKeys(fileToUpload.getAbsolutePath());
 
 
         driver.findElement(By.cssSelector(".btn-primary")).click();
