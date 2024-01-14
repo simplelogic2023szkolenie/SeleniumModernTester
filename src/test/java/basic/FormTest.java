@@ -3,6 +3,7 @@ package basic;
 import base.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -36,7 +37,8 @@ public class FormTest extends TestBase {
         }
 
 
-
+        Select continentsSelect = new Select(driver.findElement(By.cssSelector("#selectContinents")));
+        continentsSelect.selectByValue("europe");
 
 
 
