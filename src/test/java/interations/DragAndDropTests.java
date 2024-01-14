@@ -2,6 +2,8 @@ package interations;
 
 import base.TestBase;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -43,6 +45,23 @@ public class DragAndDropTests extends TestBase {
     public void shouldDragAndDropV3() {
         actions.clickAndHold(draggable)
                 .release(areaToDrop)
+                .perform();
+
+        Assert.assertEquals(areaToDrop.getText(), "Dropped!");
+    }
+
+    @Test
+    public void shouldDragAndDropV4() {
+        Point draggableLocation = draggable.getLocation();
+        Point areaToDropLocation = areaToDrop.getLocation();
+
+        Dimension areaToDropSize = areaToDrop.getSize();
+
+
+        int xOffset = areaToDropLocation.x + areaToDropSize.width/2-draggableLocation.x;
+        int yOffset = areaToDropLocation.y + areaToDropSize.height/2-draggableLocation.y;
+
+        actions.dragAndDropBy(draggable,xOffset,yOffset)
                 .perform();
 
         Assert.assertEquals(areaToDrop.getText(), "Dropped!");
