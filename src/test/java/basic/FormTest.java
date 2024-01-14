@@ -3,6 +3,7 @@ package basic;
 import base.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -17,10 +18,32 @@ public class FormTest extends TestBase {
         WebElement firstNameInput= driver.findElement(By.cssSelector("#inputFirstName3"));
         firstNameInput.sendKeys("Jan");
 
-        driver.findElement(By.cssSelector("#inputAge3")).sendKeys("30");
+        driver.findElement(By.cssSelector("#inputLastName3")).sendKeys("Kowalski");
+        driver.findElement(By.cssSelector("#inputEmail3")).sendKeys("j.k@w.pl");
+        driver.findElement(By.cssSelector("#inputAge3")).sendKeys("45");
 
         List<WebElement> genders = driver.findElements(By.cssSelector("[name='gridRadiosSex']"));
         genders.get(0).click();
+
+        driver.findElements(By.cssSelector("[name='gridRadiosExperience']")).get(0).click();
+
+
+        List<WebElement> professions = driver.findElements(By.cssSelector("[name='gridCheckboxProfession']"));
+        Assert.assertFalse(professions.isEmpty());
+
+        for (WebElement profession : professions) {
+            profession.click();
+        }
+
+
+
+
+
+
+
+        driver.findElement(By.cssSelector(".btn-primary")).click();
+        String msg = driver.findElement(By.cssSelector("#validator-message")).getText();
+        Assert.assertEquals(msg, "Form send with success");
     }
 
 
