@@ -41,8 +41,9 @@ public class AlertsTests extends TestBase {
     public void shouldFillPromptAlert() {
         driver.findElement(By.cssSelector("#prompt-alert")).click();
 
-        driver.switchTo().alert().sendKeys("Jan");
-        driver.switchTo().alert().accept();
+        Alert alert = driver.switchTo().alert();
+        alert.sendKeys("Jan");
+        alert.accept();
 
         Assert.assertEquals(driver.findElement(By.cssSelector("#confirm-label")).getText(),
                 "Hello Jan! How are you today?");
