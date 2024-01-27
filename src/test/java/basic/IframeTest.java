@@ -15,5 +15,8 @@ public class IframeTest extends TestBase {
         driver.findElement(By.cssSelector("#inputFirstName3")).sendKeys("Jan");
 
         driver.switchTo().defaultContent();
+
+        driver.switchTo().frame("iframe2");
+        driver.findElement(By.cssSelector("#inputLogin")).sendKeys("Jan");
     }
 }
