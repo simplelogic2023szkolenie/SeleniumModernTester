@@ -1,6 +1,7 @@
 package basic;
 
 import base.TestBase;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -68,6 +69,19 @@ public class AlertsTests extends TestBase {
         wait.until(ExpectedConditions.alertIsPresent());
 
         driver.switchTo().alert().accept();
+
+
+        WebElement alertLbl = driver.findElement(By.cssSelector("#delayed-alert-label"));
+        Assert.assertEquals(alertLbl.getText(), "OK button pressed");
+    }
+
+    @Test
+    public void shouldWaitForAlertv2(){
+        driver.findElement(By.cssSelector("#delayed-alert")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert.accept();
 
 
         WebElement alertLbl = driver.findElement(By.cssSelector("#delayed-alert-label"));
