@@ -58,10 +58,10 @@ public class DragAndDropTests extends TestBase {
         Dimension areaToDropSize = areaToDrop.getSize();
 
 
-        int xOffset = areaToDropLocation.x + areaToDropSize.width/2-draggableLocation.x;
-        int yOffset = areaToDropLocation.y + areaToDropSize.height/2-draggableLocation.y;
+        int xOffset = areaToDropLocation.x + areaToDropSize.width / 2 - draggableLocation.x;
+        int yOffset = areaToDropLocation.y + areaToDropSize.height / 2 - draggableLocation.y;
 
-        actions.dragAndDropBy(draggable,xOffset,yOffset)
+        actions.dragAndDropBy(draggable, xOffset, yOffset)
                 .perform();
 
         Assert.assertEquals(areaToDrop.getText(), "Dropped!");
