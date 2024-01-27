@@ -2,18 +2,23 @@ package basic;
 
 import base.TestBase;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class AlertsTests extends TestBase {
 
-    @Override
-    public boolean isHeadless(){
-        // uwawaga to ustawienie powoduje ze te testy lecą
-        // w trybie headless
-        return true;
-    }
+//    @Override
+//    public boolean isHeadless(){
+//        // uwawaga to ustawienie powoduje ze te testy lecą
+//        // w trybie headless
+//        return true;
+//    }
 
     @BeforeMethod
     public void openAlertsPage() {
@@ -53,5 +58,19 @@ public class AlertsTests extends TestBase {
         Assert.assertEquals(driver.findElement(By.cssSelector("#confirm-label")).getText(),
                 "You pressed Cancel!");
 
+    }
+
+    @Test
+    public void shouldWaitForAlert(){
+        driver.findElement(By.cssSelector("#delayed-alert")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.alertIsPresent());
+
+        driver.switchTo().alert().accept();
+
+
+        WebElement alertLbl = driver.findElement(By.cssSelector("#delayed-alert-label"));
+        Assert.assertEquals(alertLbl.getText(), "OK button pressed");
     }
 }
