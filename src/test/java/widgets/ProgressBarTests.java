@@ -3,6 +3,7 @@ package widgets;
 import base.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -51,5 +52,12 @@ public class ProgressBarTests extends TestBase {
         String text = driver.findElement(By.xpath("//div[.='iuhasdiuyhasdiuhasdiuhasd!']")).getText();
 
         Assert.assertEquals(text, "Complete!");
+    }
+
+    @Test
+    public void shouldWaitForProgressBarV4(){
+        driver.get("http://seleniumui.moderntester.pl/progressbar.php");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBe(By.cssSelector(".progress-label"), "Complete!"));
     }
 }
