@@ -28,6 +28,12 @@ public class IframeTest extends TestBase {
         // link do filmu o lambdach i interfejsach funcyjnych
         // https://www.youtube.com/watch?v=tj5sLSFjVj4
 
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         driver.get("http://automation-practice.emilos.pl/iframes.php");
 
 

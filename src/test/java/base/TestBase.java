@@ -8,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.time.Duration;
+
 public class TestBase {
     public boolean isHeadless() {
         return false; // powinno być pobrane z pliku
@@ -28,6 +30,9 @@ public class TestBase {
         }
 
         driver = new ChromeDriver(options);
+        // implicitlyWait konfiguurujemy w test base
+        // ale go zakomenntuje zeby mi nie modyfikował wszystkich testów ktore dziedziczną po TestBase
+        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterMethod
