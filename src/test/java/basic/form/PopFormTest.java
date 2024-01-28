@@ -21,7 +21,7 @@ public class PopFormTest extends TestBase {
         formPage.setAge("23");
         formPage.selectRandomGender();
         formPage.selectProfessions(1);
-        formPage.selectRandomkExperiences();
+        formPage.selectRandomExperiences();
         formPage.selectContinent("europe");
         formPage.selectSeleniumCommand("browser-commands");
         formPage.selectSeleniumCommand("switch-commands");

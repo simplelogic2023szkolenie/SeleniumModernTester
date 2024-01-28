@@ -61,7 +61,7 @@ public class FormPage {
         return this;
     }
 
-    public FormPage selectRandomkExperiences() {
+    public FormPage selectRandomExperiences() {
         getRandomElement(experientceRadios).click();
         return this;
     }
