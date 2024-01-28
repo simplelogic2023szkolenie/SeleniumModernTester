@@ -1,4 +1,4 @@
-package basic;
+package basic.form;
 
 import base.TestBase;
 import org.openqa.selenium.By;
